@@ -4,22 +4,43 @@ const celdas=document.getElementsByClassName("celda");
 for (let index = 0; index < celdas.length; index++) {
 
     celdas[index].addEventListener("click", function () {
-        celdas[index].innerHTML = "X";  
+    if (celdas[index].textContent === "") {
+        celdas[index].textContent = "X";  // colooca x en la que yo selecciono
+    }   
 
-    let numeroAleatorio = Math.floor(Math.random() * 9); 
-    //ver si la celda aleatoria está ocupada
-    if (celdas[numeroAleatorio].innerHTML === "") {
-        celdas[numeroAleatorio].innerHTML = "O" //sino colocar O
+//Escoger una celda vacía para la compu
+
+let celdasVacias = []
+
+for (let index = 0; index < celdas.length; index++) {
+    if (celdas[index].textContent==="") {
+        celdasVacias.push(index);
+    }
+}
+
+if (celdasVacias.length > 0) {
+    let numeroAleatorio = Math.floor(Math.random() * celdasVacias.length); 
+    celdas[numeroAleatorio].textContent = "O"; 
+}
+
+
+
+
+
+
+
+    if (celdas[numeroAleatorio].textContent === "") {
+        celdas[numeroAleatorio].textContent = "O"; //sino colocar O
 
     }else{ //sino debería buscar una celda que si esté vacía
+
         for (let index = 0; index < celdas.length; index++) {
             
             
-            if (celdas[numeroAleatorio].innerHTML = "" ) {
-                celdas[numeroAleatorio].innerHTML = "O";
+            if (celdas[numeroAleatorio].textContent === "") {
+                celdas[numeroAleatorio].textContent = "O";
                 break; //ya encontró una, ya no busque
             }
-    
          
         }
     }       
