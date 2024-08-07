@@ -15,6 +15,26 @@ for (let index = 0; index < celdas.length; index++) {
     
 console.log(celdas[index]);
 
+//Verificar si la persona gana
+const combinacionesGanadoras= [
+    [0,1,2], //filas
+    [3,4,5],
+    [6,7,8],
+    [0,3,6], //columnas
+    [1,4,7],
+    [2,5,8],
+    [0,4,8], //Diagonales
+    [2,4,6],
+]
+
+let gane = [] //variable para ver si hay un ganador
+for (let index = 0; index < combinacionesGanadoras.length; index++) {
+    const combinación = combinacionesGanadoras[index]
+}
+
+
+
+
 //JUEGA LA COMPU
 // Escoger una celda vacía para la computadora
     let celdasVacias = []; //Guardo todas las celdas que quedaron vacías después de que la persona jugó
