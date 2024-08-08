@@ -1,5 +1,5 @@
 const celdas=document.getElementsByClassName("celda");
-
+const aviso=document.getElementById("aviso")
 
 
 //JUEGA LA PERSONA
@@ -15,7 +15,7 @@ for (let index = 0; index < celdas.length; index++) {
     
 console.log(celdas[index]);
 
-//Verificar si la persona gana
+//Verifico si la persona gana
 const combinacionesGanadoras= [
     [0,1,2], //filas
     [3,4,5],
@@ -26,13 +26,20 @@ const combinacionesGanadoras= [
     [0,4,8], //Diagonales
     [2,4,6],
 ]
+//un for para recorrer todas esa combinaciones
+for (let index = 0; index < combinacionesGanadoras.length; index++) { 
+    const combinación = combinacionesGanadoras[index] //cada que itera esa varieble obtiene una combinación
+// agrego cada elemento a una varieble, separo
+    const a = combinación [0];
+    const b = combinación [1];
+    const c = combinación [2];
 
-let gane = [] //variable para ver si hay un ganador
-for (let index = 0; index < combinacionesGanadoras.length; index++) {
-    const combinación = combinacionesGanadoras[index]
+//valido, para ver si las celdas correspondientes a los índices a, b y c tienen una "X"
+    if (celdas[a].textContent === "X" && celdas[b].textContent === "X" && celdas[c].textContent === "X") {
+        aviso.textContent = "¡Ganaste!"
+        break; 
+    }
 }
-
-
 
 
 //JUEGA LA COMPU
@@ -55,8 +62,18 @@ console.log(celdasVacias);
          let numeroAleatorio = Math.floor(Math.random() * celdasVacias.length); 
         celdasVacias[numeroAleatorio].textContent = "O"; //la que está vacía se llena con una "O"
 
-console.log(numeroAleatorio);
-console.log(celdas);
+        for (let index = 0; index < combinacionesGanadoras.length; index++) {
+            const combinación = combinacionesGanadoras[index]
+            const a = combinación [0];
+            const b = combinación [1];
+            const c = combinación [2];
+        
+        
+            if (celdas[a].textContent === "O" && celdas[b].textContent === "O" && celdas[c].textContent === "O") {
+                aviso.textContent = "¡Ganó la compu! ¡Sigue intentándolo!"
+                break; 
+            }
+        }
 
         }
         }   
