@@ -6,10 +6,13 @@ const marcadorCompu = document.getElementById("marcadorCompu");
 
 
 
+let ganePersona = localStorage.getItem(marcadorPersona) || 0;
+let ganeCompu = localStorage.getItem(marcadorCompu) || 0;
 
 
 //JUEGA LA PERSONA
 //Recorro todas las celdas
+
 for (let index = 0; index < celdas.length; index++) {
     //agrego el evento
     celdas[index].addEventListener("click", function () {
@@ -39,7 +42,7 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
     const indiceA = combinación [0];
     const indiceB = combinación [1];
     const indiceC = combinación [2];
-
+    console.log(combinación);
 //valido, para ver si las celdas correspondientes a los índices a, b y c tienen una "X"
     if (celdas[indiceA].textContent === "🤍" && celdas[indiceB].textContent === "🤍" && celdas[indiceC].textContent === "🤍") {
         aviso.textContent = "¡Ganaste!";
@@ -47,6 +50,8 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
         break; 
         
     }
+    
+    
 }
 
 //JUEGA LA COMPU
@@ -108,6 +113,28 @@ function empate() { // recorre todas las celdas para ver si alguna está vacía
     }
  }
 
+
+//TERMINAR JUEGO
+function terminarJuego() {
+    for (let index = 0; index < celdas.length; index++) {
+        if (aviso.textContent === "¡Ganaste!") {
+            celdas[index].style.pointerEvents = "none"; // desactiva el evento cuando hay un gane
+            //incrementa y guarda
+            ganePersona++;
+            localStorage.setItem("ganesPersonas", ganePersona);
+            marcadorPersona.innerText = ganePersona;
+            ganePersona = 0
+        }else if (aviso.textContent === "¡Sigue intentándolo!") {
+            celdas[index].style.pointerEvents = "none";
+
+            ganeCompu++;
+            localStorage.setItem("ganesCompu", ganeCompu);
+            marcadorCompu.innerText = ganeCompu;
+            ganeCompu = 0
+        }
+    }
+}
+
  //REINICIAR
  iconoReiniciar.addEventListener("click", function () {
     for (let index = 0; index < celdas.length; index++) {
@@ -116,13 +143,5 @@ function empate() { // recorre todas las celdas para ver si alguna está vacía
         celdas[index].style.backgroundColor = "" //restablece el color
     }
     aviso.textContent = "" //limpia el aviso
-})
 
-//TERMINAR JUEGO
-function terminarJuego() {
-    for (let index = 0; index < celdas.length; index++) {
-        if (aviso.textContent === "¡Ganaste!" || aviso.textContent === "¡Sigue intentándolo!") {
-            celdas[index].style.pointerEvents = "none"; // desactiva el evento cuando hay un gane
-        }
-    }
-}
+})

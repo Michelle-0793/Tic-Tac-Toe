@@ -11,9 +11,10 @@ h1{
 }
 .divMarcadores{
     display: grid;
-    grid-template-columns: 200px 200px;
+    grid-template-columns: 100px 100px;
     justify-content: center;
-    margin-top: -10px;
+    margin-top: -15px;
+    margin-bottom: 10;
 }
 .iconPersona{
     width: auto;
@@ -24,26 +25,38 @@ h1{
     height: 30px;
 }
 .pMarcador{
-    font-size: 15px;
+    font-size: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #FFE3FD;
+    text-align: center;
+}
+.divPersona{
+    display: grid;
+    grid-template-columns: 50px 20px;
+    align-items: center;
+
+}
+.divCompu{
+    display: grid;
+    grid-template-columns: 50px 50px;
+    align-items: center;
+
 }
 .divCelda{
    display: grid;
-   grid-template-columns: repeat(3,125px);
-   grid-template-rows: repeat(3, 125px);
+   grid-template-columns: repeat(3,120px);
+   grid-template-rows: repeat(3, 120px);
    justify-content: center;
    padding: 0; 
    margin: 0; 
    border: none;
-   gap: 3px;
+   gap: 5px;
 
 }
-
 .celda{
 
-   border-radius: 10px;
-   box-shadow: 0 0 10px #FFE3FD, 0 0 10px #D517BF, 0 0 30px #FFE3FD;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #FFE3FD, 0 0 10px #D517BF, 0 0 30px #FFE3FD;
     box-sizing: border-box; 
     display: flex;
     align-items: center;
@@ -103,4 +116,5 @@ border: none;
     text-align: center;
     justify-items: center;
     justify-content: center;
+
 }
