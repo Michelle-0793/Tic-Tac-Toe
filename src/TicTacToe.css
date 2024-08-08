@@ -12,15 +12,21 @@ h1{
 
 .divCelda{
    display: grid;
-   grid-template-columns: repeat(3,150px);
-   grid-template-rows: repeat(3, 150px);
+   grid-template-columns: repeat(3,130px);
+   grid-template-rows: repeat(3, 130px);
    justify-content: center;
+   padding: 0; 
+   margin: 0; 
+   border: none;
+   gap: 3px;
 
 }
 
 .celda{
-    border: 5px solid #FFE3FD;
-    border-width: 2px 2px 2px 2px;
+
+   border-radius: 10px;
+   box-shadow: 0 0 10px #FFE3FD, 0 0 10px #D517BF, 0 0 30px #FFE3FD;
+    box-sizing: border-box; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +35,50 @@ h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     color: #c43ebb;
+    position: relative;
 
 }
 
+/*
+/* Agrega bordes internos 
+.celda:nth-child(-n+6) {
+    border-bottom: 3px solid #FFE3FD; /* Bordes de abajo para las dos primeras filas 
+}
 
+.celda:nth-child(3n+1), .celda:nth-child(3n+2) {
+    border-right: 3px solid #FFE3FD; /* Bordes de la derecha para las dos primeras columnas 
+}
+*/
+
+.aviso{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+.imgReiniciar{
+    width: auto;
+    height: 50px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border-radius: 50px;
+    border-color: #FFE3FD;
+    border-width: 2px;
+    border-style: solid;
+
+}
+.divImgReiniciar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.btnReiniciar{
+background: none;
+border: none;
+}

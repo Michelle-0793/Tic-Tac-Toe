@@ -1,5 +1,6 @@
-const celdas=document.getElementsByClassName("celda");
-const aviso=document.getElementById("aviso")
+const celdas = document.getElementsByClassName("celda");
+const aviso = document.getElementById("aviso");
+const iconoReiniciar = document.getElementById("reiniciar");
 
 
 //JUEGA LA PERSONA
@@ -41,7 +42,6 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
     }
 }
 
-
 //JUEGA LA COMPU
 // Escoger una celda vacía para la computadora
     let celdasVacias = []; //Guardo todas las celdas que quedaron vacías después de que la persona jugó
@@ -74,12 +74,42 @@ console.log(celdasVacias);
                 break; 
             }
         }
-
+       
         }
+        empate(); //llamo a la función empate
         }   
     })
 }
 
+//Creo una función para el EMPATE y la llamo después de cada jugada
+
+function empate() { // recorre todas las celdas para ver si alguna está vacía
+    let celdasLlenas = true //para ver que todas las celdas estén llenas
+ 
+    for (let index = 0; index < celdas.length; index++) {
+     if (celdas[index].textContent === "") {
+         celdasLlenas = false; //si encontró celda vacía, ahora es falso
+         break; 
+     }
+     console.log(empate);
+     
+    }
+ //EMPATE
+ //celdasLlenas debería seguir siendo true y el texto de aviso debería estár vacío
+ //eso indica que aún no hay ganador en el aviso, entonces el texto cambia a empate
+    if (celdasLlenas && aviso.textContent === "") { 
+     aviso.textContent = "¡Empate!"
+    }
+ }
+
+ //REINICIAR
+iconoReiniciar.addEventListener("click", function () {
+    for (let index = 0; index < celdas.length; index++) {
+        celdas[index].textContent = ""; //limpia el contenido de la celda
+        celdas[index].style.backgroundColor= "" //restablece el color
+    }
+    aviso.textContent = "" //limpia el aviso
+})
 
 
 
