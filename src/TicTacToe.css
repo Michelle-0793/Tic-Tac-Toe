@@ -52,8 +52,8 @@ h1{
 
 .aviso{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 25px;
-    text-align: center;
+    font-size: 20px;
+    text-align: start;
     color: #ffffff;
     padding: 0;
     margin: 0;
@@ -61,16 +61,12 @@ h1{
 
 .imgReiniciar{
     width: auto;
-    height: 50px;
+    height: 45px;
     cursor: pointer;
     padding: 0;
     margin: 0;
-    border-radius: 50px;
-    border-color: #FFE3FD;
-    border-width: 2px;
-    border-style: solid;
-
 }
+
 .divImgReiniciar{
     display: flex;
     align-items: center;
@@ -81,4 +77,12 @@ h1{
 .btnReiniciar{
 background: none;
 border: none;
+}
+
+.divElementosInferiores{
+    display: grid;
+    grid-template-columns: 353px 5px;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
 }

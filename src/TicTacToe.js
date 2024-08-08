@@ -70,7 +70,7 @@ console.log(celdasVacias);
         
         
             if (celdas[a].textContent === "O" && celdas[b].textContent === "O" && celdas[c].textContent === "O") {
-                aviso.textContent = "¡Ganó la compu! ¡Sigue intentándolo!"
+                aviso.textContent = "¡Sigue intentándolo!"
                 break; 
             }
         }
