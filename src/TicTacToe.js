@@ -3,6 +3,7 @@ const aviso = document.getElementById("aviso");
 const iconoReiniciar = document.getElementById("reiniciar");
 
 
+
 //JUEGA LA PERSONA
 //Recorro todas las celdas
 for (let index = 0; index < celdas.length; index++) {
@@ -107,75 +108,22 @@ function empate() { // recorre todas las celdas para ver si alguna está vacía
 
 
  }
-
+ 
  //REINICIAR
-iconoReiniciar.addEventListener("click", function () {
+ iconoReiniciar.addEventListener("click", function () {
     for (let index = 0; index < celdas.length; index++) {
+        celdas[index].style.pointerEvents = "auto"; // activa el evento cuando doy click el iconoReiniciar
         celdas[index].textContent = ""; //limpia el contenido de la celda
         celdas[index].style.backgroundColor = "" //restablece el color
     }
     aviso.textContent = "" //limpia el aviso
 })
 
-
 //TERMINAR JUEGO
 function terminarJuego() {
     for (let index = 0; index < celdas.length; index++) {
         if (aviso.textContent === "¡Ganaste!" || aviso.textContent === "¡Sigue intentándolo!") {
-            celdas[index].style.pointerEvents = "none";
-        }   
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-for (let index = 0; index < celdas.length; index++) {
-
-    celdas[index].addEventListener("click", function () {
-    if (celdas[index].textContent === "") {
-        celdas[index].textContent = "X";  // colooca x en la que yo selecciono
-    }   
-
-//Escoger una celda vacía para la compu
-
-let celdasVacias = []
-
-for (let index = 0; index < celdas.length; index++) {
-    if (celdas[index].textContent==="") {
-        celdasVacias.push(celdas[index]);
-    }
-}
-
-if (celdasVacias.length > 0) {
-    let numeroAleatorio = Math.floor(Math.random() * celdas.length); 
-    celdas[numeroAleatorio].textContent = "O"; 
-}
-
-    if (celdas[numeroAleatorio].textContent === "") {
-        celdas[numeroAleatorio].textContent = "O"; //sino colocar O
-
-    }else{ //sino debería buscar una celda que si esté vacía
-
-        for (let index = 0; index < celdas.length; index++) {
-            
-            
-            if (celdas[numeroAleatorio].textContent === "") {
-                celdas[numeroAleatorio].textContent = "O";
-                break; //ya encontró una, ya no busque
-            }
-         
+            celdas[index].style.pointerEvents = "none"; // desactiva el evento cuando hay un gane
         }
-    }       
-    })
+    }
 }
-*/
