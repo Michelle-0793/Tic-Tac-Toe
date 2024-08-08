@@ -1,6 +1,10 @@
 const celdas = document.getElementsByClassName("celda");
 const aviso = document.getElementById("aviso");
 const iconoReiniciar = document.getElementById("reiniciar");
+const marcadorPersona = document.getElementById ("marcadorPersona");
+const marcadorCompu = document.getElementById("marcadorCompu");
+
+
 
 
 
@@ -43,7 +47,6 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
         break; 
         
     }
-
 }
 
 //JUEGA LA COMPU
@@ -72,13 +75,12 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
             const indiceC = combinación [2];
         
         
-            if (celdas[indiceA].textContent === "◯" && celdas[indiceB].textContent === "◯" && celdas[indiceC].textContent === "◯") {
-                aviso.textContent = "¡Sigue intentándolo!";
-                terminarJuego()
-                break; 
+        if (celdas[indiceA].textContent === "◯" && celdas[indiceB].textContent === "◯" && celdas[indiceC].textContent === "◯") {
+            aviso.textContent = "¡Sigue intentándolo!";
+            terminarJuego()
+            break; 
             }
         }
-       
         }
         empate(); //llamo a la función empate
 
@@ -86,7 +88,7 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
     })
 }
 
-//Creo una función para el EMPATE y la llamo después de cada jugada
+//Creo una FUNCIÓN para el EMPATE y la llamo después de cada jugada
 
 function empate() { // recorre todas las celdas para ver si alguna está vacía
     let celdasLlenas = true //para ver que todas las celdas estén llenas
@@ -96,19 +98,16 @@ function empate() { // recorre todas las celdas para ver si alguna está vacía
          celdasLlenas = false; //si encontró celda vacía, ahora es falso
          break; 
      }
-
-     
     }
+
  //EMPATE
  //celdasLlenas debería seguir siendo true y el texto de aviso debería estár vacío
  //eso indica que aún no hay ganador en el aviso, entonces el texto cambia a empate
     if (celdasLlenas && aviso.textContent === "") { 
      aviso.textContent = "¡Empate!"
     }
-
-
  }
- 
+
  //REINICIAR
  iconoReiniciar.addEventListener("click", function () {
     for (let index = 0; index < celdas.length; index++) {

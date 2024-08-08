@@ -9,11 +9,29 @@ h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(255, 255, 255);
 }
-
+.divMarcadores{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    justify-content: center;
+    margin-top: -10px;
+}
+.iconPersona{
+    width: auto;
+    height: 30px;
+}
+.iconCompu{
+    width: auto;
+    height: 30px;
+}
+.pMarcador{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #FFE3FD;
+}
 .divCelda{
    display: grid;
-   grid-template-columns: repeat(3,130px);
-   grid-template-rows: repeat(3, 130px);
+   grid-template-columns: repeat(3,125px);
+   grid-template-rows: repeat(3, 125px);
    justify-content: center;
    padding: 0; 
    margin: 0; 
@@ -71,7 +89,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
 .btnReiniciar{
@@ -81,7 +99,7 @@ border: none;
 
 .divElementosInferiores{
     display: grid;
-    grid-template-columns: 353px 5px;
+    grid-template-columns: 330px 5px;
     text-align: center;
     justify-items: center;
     justify-content: center;
