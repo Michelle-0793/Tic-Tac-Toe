@@ -90,6 +90,7 @@ h1{
     color: #ffffff;
     padding: 0;
     margin: 0;
+
 }
 .avisoCompu{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -97,7 +98,11 @@ h1{
     text-align: start;
     color: #c43ebb;
     padding: 0;
-    margin: 0;
+   align-items: center;
+}
+.divBtnResetScore{
+    text-align: start;
+    margin-right: 30px;
 }
 .imgReiniciar{
     width: auto;
@@ -111,7 +116,6 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -15px;
 }
 
 .btnReiniciar{
@@ -121,10 +125,12 @@ border: none;
 
 .divElementosInferiores{
     display: grid;
-    grid-template-columns: 100px 200px 100px;
+    grid-template-columns: 80px 225px 100px;
     text-align: center;
     justify-items: center;
     justify-content: center;
+    align-items: center;
+    margin-top: -20px;
 
 }
 .celdasGanadoras{
@@ -135,8 +141,8 @@ border: none;
     width: 100px;
     border-radius: 50px;
 text-align: center;
-font-size: 14px;
-background-color: #D517BF;
+font-size: 12px;
+background-color: #6c0a85;
 color: rgb(255, 255, 255);
 border: transparent; 
 cursor: pointer;
