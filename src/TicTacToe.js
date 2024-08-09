@@ -6,13 +6,17 @@ const marcadorCompu = document.getElementById("marcadorCompu");
 
 
 
-let ganePersona = localStorage.getItem(marcadorPersona) || 0;
-let ganeCompu = localStorage.getItem(marcadorCompu) || 0;
+let ganesPersona = parseInt(localStorage.getItem("ganesPersonas")) || 0;
+let ganesCompu = parseInt(localStorage.getItem("ganesCompu")) || 0;
 
+// Al cargar la página, reiniciar el marcador en el DOM a 0
+window.onload = function() {
+    marcadorPersona.innerHTML = ganesPersona;
+    marcadorCompu.innerHTML = ganesCompu;
+};
 
 //JUEGA LA PERSONA
-//Recorro todas las celdas
-
+//Recorro todas las celdas   
 for (let index = 0; index < celdas.length; index++) {
     //agrego el evento
     celdas[index].addEventListener("click", function () {
@@ -46,16 +50,18 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
 //valido, para ver si las celdas correspondientes a los índices a, b y c tienen una "X"
     if (celdas[indiceA].textContent === "🤍" && celdas[indiceB].textContent === "🤍" && celdas[indiceC].textContent === "🤍") {
         aviso.textContent = "¡Ganaste!";
+        resaltarGanador(combinación); 
         terminarJuego()
         break; 
         
-    }
-    
-    
+    }   
 }
 
 //JUEGA LA COMPU
 // Escoger una celda vacía para la computadora
+
+setTimeout(function () {
+    
     let celdasVacias = []; //Guardo todas las celdas que quedaron vacías después de que la persona jugó
 
     //Se vuelve a recorrer para ahora guardar las celdas vacías
@@ -82,6 +88,7 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
         
         if (celdas[indiceA].textContent === "◯" && celdas[indiceB].textContent === "◯" && celdas[indiceC].textContent === "◯") {
             aviso.textContent = "¡Sigue intentándolo!";
+            resaltarGanador(combinación);
             terminarJuego()
             break; 
             }
@@ -89,9 +96,12 @@ for (let index = 0; index < combinacionesGanadoras.length; index++) {
         }
         empate(); //llamo a la función empate
 
-        }   
-    })
+    }, 300); // milisegundos 0.3 segundos
 }
+
+});
+}
+
 
 //Creo una FUNCIÓN para el EMPATE y la llamo después de cada jugada
 
@@ -111,37 +121,47 @@ function empate() { // recorre todas las celdas para ver si alguna está vacía
     if (celdasLlenas && aviso.textContent === "") { 
      aviso.textContent = "¡Empate!"
     }
- }
+ };
 
+//RESALTAR AL GANADOR
+function resaltarGanador(indices) {
+    for (let index = 0; index < indices.length; index++) {
+        const indice = indices[index];
+        celdas[indice].classList.add("celdasGanadoras");
+    }
+};
 
 //TERMINAR JUEGO
 function terminarJuego() {
-    for (let index = 0; index < celdas.length; index++) {
-        if (aviso.textContent === "¡Ganaste!") {
-            celdas[index].style.pointerEvents = "none"; // desactiva el evento cuando hay un gane
-            //incrementa y guarda
-            ganePersona++;
-            localStorage.setItem("ganesPersonas", ganePersona);
-            marcadorPersona.innerText = ganePersona;
-            ganePersona = 0
-        }else if (aviso.textContent === "¡Sigue intentándolo!") {
-            celdas[index].style.pointerEvents = "none";
-
-            ganeCompu++;
-            localStorage.setItem("ganesCompu", ganeCompu);
-            marcadorCompu.innerText = ganeCompu;
-            ganeCompu = 0
+    if (aviso.textContent === "¡Ganaste!") {
+        for (let index = 0; index < celdas.length; index++) {
+            celdas[index].style.pointerEvents = "none"; // desactiva todas las celdas
         }
+        // Incrementa y guarda los ganes del jugador
+        ganesPersona++;
+        localStorage.setItem("ganesPersonas", ganesPersona);
+        marcadorPersona.innerHTML = ganesPersona;
+
+
+    } else if (aviso.textContent === "¡Sigue intentándolo!") {
+        for (let index = 0; index < celdas.length; index++) {
+            celdas[index].style.pointerEvents = "none"; // desactiva todas las celdas
+        }
+        // Incrementa y guarda los ganes de la computadora
+        ganesCompu++;
+        localStorage.setItem("ganesCompu", ganesCompu);
+        marcadorCompu.innerHTML = ganesCompu;
+
     }
 }
 
- //REINICIAR
- iconoReiniciar.addEventListener("click", function () {
+// REINICIAR JUEGO
+iconoReiniciar.addEventListener("click", function () {
     for (let index = 0; index < celdas.length; index++) {
-        celdas[index].style.pointerEvents = "auto"; // activa el evento cuando doy click el iconoReiniciar
-        celdas[index].textContent = ""; //limpia el contenido de la celda
-        celdas[index].style.backgroundColor = "" //restablece el color
+        celdas[index].style.pointerEvents = "auto";
+        celdas[index].textContent = "";
+        celdas[index].style.backgroundColor = "";
+        celdas[index].classList.remove("celdasGanadoras");
     }
-    aviso.textContent = "" //limpia el aviso
-
-})
+    aviso.textContent = "";
+});
