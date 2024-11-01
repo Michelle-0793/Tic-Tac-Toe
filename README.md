@@ -16,5 +16,5 @@ Un sencillo juego de tres en línea desarrollado en JavaScript, donde el jugador
 4. **Reiniciar marcador**: Para restablecer el marcador a cero, utiliza el botón de "Reset Score".
 
 ## Tecnologías Utilizadas
-1. **HTML y CSS para el diseño de la interfaz.
-2. **JavaScript para la lógica del juego y manejo de localStorage.
+1. HTML y CSS para el diseño de la interfaz.
+2. JavaScript para la lógica del juego y manejo de localStorage.
